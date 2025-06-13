@@ -14,7 +14,20 @@ import {
   Instagram,
   Mail,
   Phone,
-  MapPin
+  MapPin,
+  TrendingUp,
+  Bell,
+  ExternalLink,
+  Download,
+  Eye,
+  ThumbsUp,
+  Calendar,
+  AlertCircle,
+  Award,
+  BookmarkPlus,
+  MessageSquare,
+  User,
+  LogIn
 } from 'lucide-react';
 
 function App() {
@@ -47,48 +60,128 @@ function App() {
     { id: 'papers', name: 'Question Papers', icon: ClipboardList, color: 'bg-red-500', description: 'Previous year papers' }
   ];
 
-  const featuredContent = [
+  const trendingMaterials = [
     {
       id: 1,
-      title: 'Advanced Java Programming Lab Manual',
+      title: 'Data Structures & Algorithms Complete Notes',
       subject: 'Computer Engineering',
-      type: 'Lab Manual',
-      rating: 4.8,
-      downloads: 1250,
-      isNew: true
+      semester: 'Semester 4',
+      downloads: 2847,
+      views: 12450,
+      rating: 4.9,
+      uploadDate: '2 days ago',
+      trending: true,
+      type: 'Notes'
     },
     {
       id: 2,
-      title: 'Engineering Mechanics Question Bank',
+      title: 'Engineering Mechanics Lab Manual 2025',
       subject: 'Mechanical Engineering',
-      type: 'Question Papers',
-      rating: 4.6,
-      downloads: 890,
-      isNew: false
+      semester: 'Semester 3',
+      downloads: 1923,
+      views: 8760,
+      rating: 4.8,
+      uploadDate: '1 week ago',
+      trending: true,
+      type: 'Lab Manual'
     },
     {
       id: 3,
-      title: 'Digital Electronics Micro-Project Ideas',
+      title: 'Digital Electronics Micro-Project Collection',
       subject: 'Electronics Engineering',
-      type: 'Projects',
+      semester: 'Semester 5',
+      downloads: 3156,
+      views: 15230,
       rating: 4.9,
-      downloads: 2100,
-      isNew: true
+      uploadDate: '3 days ago',
+      trending: true,
+      type: 'Projects'
     },
     {
       id: 4,
-      title: 'Concrete Technology Assignment Solutions',
+      title: 'Construction Technology Assignment Solutions',
       subject: 'Civil Engineering',
-      type: 'Assignments',
+      semester: 'Semester 4',
+      downloads: 1456,
+      views: 6890,
       rating: 4.7,
-      downloads: 670,
-      isNew: false
+      uploadDate: '5 days ago',
+      trending: false,
+      type: 'Assignments'
+    }
+  ];
+
+  const officialUpdates = [
+    {
+      id: 1,
+      title: 'MSBTE Summer 2025 Exam Schedule Released',
+      description: 'Check your exam dates and prepare accordingly. Download the complete timetable.',
+      date: '2025-01-15',
+      type: 'Exam Schedule',
+      priority: 'high',
+      link: '#'
+    },
+    {
+      id: 2,
+      title: 'New Curriculum Updates for AY 2024-25',
+      description: 'Updated syllabus for Computer and Electronics Engineering branches.',
+      date: '2025-01-12',
+      type: 'Curriculum',
+      priority: 'medium',
+      link: '#'
+    },
+    {
+      id: 3,
+      title: 'Online Practical Submission Guidelines',
+      description: 'Important instructions for submitting lab practicals online.',
+      date: '2025-01-10',
+      type: 'Guidelines',
+      priority: 'high',
+      link: '#'
+    }
+  ];
+
+  const importantLinks = [
+    { name: 'MSBTE Official Portal', url: 'https://msbte.org.in', description: 'Official MSBTE website' },
+    { name: 'Student Login Portal', url: '#', description: 'Access your student dashboard' },
+    { name: 'Exam Results', url: '#', description: 'Check your semester results' },
+    { name: 'Admission Information', url: '#', description: 'Polytechnic admission details' },
+    { name: 'Scholarship Portal', url: '#', description: 'Apply for scholarships' },
+    { name: 'Academic Calendar', url: '#', description: 'Important academic dates' }
+  ];
+
+  const recentReviews = [
+    {
+      id: 1,
+      userName: 'Priya S.',
+      branch: 'Computer Engineering',
+      rating: 5,
+      comment: 'Amazing collection of notes! Helped me score 85% in my semester exams.',
+      date: '2 days ago',
+      materialTitle: 'Java Programming Notes'
+    },
+    {
+      id: 2,
+      userName: 'Rahul M.',
+      branch: 'Mechanical Engineering',
+      rating: 5,
+      comment: 'Lab manuals are very detailed and easy to understand. Highly recommended!',
+      date: '1 week ago',
+      materialTitle: 'Thermodynamics Lab Manual'
+    },
+    {
+      id: 3,
+      userName: 'Sneha K.',
+      branch: 'Electronics Engineering',
+      rating: 4,
+      comment: 'Great micro-project ideas. Successfully completed my semester project.',
+      date: '3 days ago',
+      materialTitle: 'IoT Project Collection'
     }
   ];
 
   const handleShowMaterials = () => {
     if (selectedBranch && selectedSemester) {
-      // Navigate to materials page
       console.log(`Showing materials for ${selectedBranch} - ${selectedSemester}`);
     }
   };
@@ -105,11 +198,26 @@ function App() {
               </div>
               <span className="text-xl font-bold text-gray-900">College Sahayak</span>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Home</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Resources</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">About</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium">Contact</a>
+            <div className="hidden md:flex items-center space-x-6">
+              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+                <span>Home</span>
+              </a>
+              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+                <BookOpen className="w-4 h-4" />
+                <span>Resources</span>
+              </a>
+              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+                <LogIn className="w-4 h-4" />
+                <span>Login/Register</span>
+              </a>
+              <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+                <User className="w-4 h-4" />
+                <span>About Us</span>
+              </a>
+              <a href="#" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center space-x-1">
+                <MessageSquare className="w-4 h-4" />
+                <span>Feedback</span>
+              </a>
             </div>
           </div>
         </div>
@@ -284,45 +392,186 @@ function App() {
         </div>
       </section>
 
-      {/* Featured Content */}
+      {/* Trending Materials Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Recently Added</h2>
-            <p className="mt-4 text-lg text-gray-600">Popular resources this week</p>
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <TrendingUp className="w-8 h-8 text-orange-500" />
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Trending Study Materials</h2>
+            </div>
+            <p className="text-lg text-gray-600">Most popular downloads this week</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredContent.map((item) => (
+            {trendingMaterials.map((item) => (
               <div
                 key={item.id}
                 className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer group hover:-translate-y-1"
               >
-                {item.isNew && (
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full">
-                      NEW
-                    </span>
-                  </div>
-                )}
-                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600 mb-3">{item.subject}</p>
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
-                  <span className="bg-gray-100 px-2 py-1 rounded">{item.type}</span>
+                <div className="flex justify-between items-start mb-4">
+                  <span className={`text-xs font-semibold px-2 py-1 rounded-full ${
+                    item.trending ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'
+                  }`}>
+                    {item.trending ? 'TRENDING' : item.type}
+                  </span>
                   <div className="flex items-center space-x-1">
                     <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                    <span>{item.rating}</span>
+                    <span className="text-xs text-gray-600">{item.rating}</span>
                   </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-xs text-gray-500">
-                    <Users className="w-3 h-3 mr-1" />
-                    <span>{item.downloads} downloads</span>
+                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-1">{item.subject}</p>
+                <p className="text-xs text-gray-500 mb-4">{item.semester}</p>
+                <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-1">
+                      <Download className="w-3 h-3" />
+                      <span>{item.downloads}</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Eye className="w-3 h-3" />
+                      <span>{item.views}</span>
+                    </div>
                   </div>
+                  <span>{item.uploadDate}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                    Download Now
+                  </button>
                   <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-200" />
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Official Updates from MSBTE */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <Bell className="w-8 h-8 text-blue-500" />
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Official Updates from MSBTE</h2>
+            </div>
+            <p className="text-lg text-gray-600">Stay updated with the latest announcements and important information</p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {officialUpdates.map((update) => (
+              <div
+                key={update.id}
+                className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-200 cursor-pointer group"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    update.priority === 'high' 
+                      ? 'bg-red-100 text-red-800' 
+                      : 'bg-yellow-100 text-yellow-800'
+                  }`}>
+                    {update.type}
+                  </div>
+                  <div className="flex items-center text-xs text-gray-500">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    {new Date(update.date).toLocaleDateString()}
+                  </div>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                  {update.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                  {update.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <a 
+                    href={update.link}
+                    className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center space-x-1"
+                  >
+                    <span>Read More</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  {update.priority === 'high' && (
+                    <AlertCircle className="w-4 h-4 text-red-500" />
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Student Reviews Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <Award className="w-8 h-8 text-green-500" />
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">What Students Say</h2>
+            </div>
+            <p className="text-lg text-gray-600">Real reviews from polytechnic students across Maharashtra</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {recentReviews.map((review) => (
+              <div
+                key={review.id}
+                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-200"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
+                      {review.userName.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">{review.userName}</div>
+                      <div className="text-xs text-gray-500">{review.branch}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                </div>
+                <p className="text-gray-700 mb-4 leading-relaxed">"{review.comment}"</p>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-blue-600 font-medium">{review.materialTitle}</span>
+                  <span className="text-gray-500">{review.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Important Links Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <BookmarkPlus className="w-8 h-8 text-purple-500" />
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Important Links</h2>
+            </div>
+            <p className="text-lg text-gray-600">Quick access to essential polytechnic resources</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {importantLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100 hover:shadow-lg transition-all duration-200 cursor-pointer group hover:-translate-y-1"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors">
+                    {link.name}
+                  </h3>
+                  <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-purple-600 transition-colors" />
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {link.description}
+                </p>
+              </a>
             ))}
           </div>
         </div>
