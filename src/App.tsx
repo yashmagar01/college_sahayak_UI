@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   BookOpen, 
   FileText, 
@@ -27,12 +27,21 @@ import {
   BookmarkPlus,
   MessageSquare,
   User,
-  LogIn
+  LogIn,
+  Flame,
+  Zap,
+  Shield,
+  CheckCircle
 } from 'lucide-react';
 
 function App() {
   const [selectedBranch, setSelectedBranch] = useState('');
   const [selectedSemester, setSelectedSemester] = useState('');
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const branches = [
     { id: 'computer', name: 'Computer Engineering', icon: '💻' },
@@ -71,7 +80,8 @@ function App() {
       rating: 4.9,
       uploadDate: '2 days ago',
       trending: true,
-      type: 'Notes'
+      type: 'Notes',
+      weeklyGrowth: '+45%'
     },
     {
       id: 2,
@@ -83,7 +93,8 @@ function App() {
       rating: 4.8,
       uploadDate: '1 week ago',
       trending: true,
-      type: 'Lab Manual'
+      type: 'Lab Manual',
+      weeklyGrowth: '+32%'
     },
     {
       id: 3,
@@ -95,7 +106,8 @@ function App() {
       rating: 4.9,
       uploadDate: '3 days ago',
       trending: true,
-      type: 'Projects'
+      type: 'Projects',
+      weeklyGrowth: '+67%'
     },
     {
       id: 4,
@@ -106,8 +118,9 @@ function App() {
       views: 6890,
       rating: 4.7,
       uploadDate: '5 days ago',
-      trending: false,
-      type: 'Assignments'
+      trending: true,
+      type: 'Assignments',
+      weeklyGrowth: '+28%'
     }
   ];
 
@@ -180,6 +193,27 @@ function App() {
     }
   ];
 
+  const trustFeatures = [
+    {
+      icon: Shield,
+      title: 'Verified & High-Quality',
+      description: 'All materials are reviewed and verified by experts',
+      color: 'text-green-600'
+    },
+    {
+      icon: CheckCircle,
+      title: 'Easy to Navigate',
+      description: 'Intuitive design makes finding resources effortless',
+      color: 'text-blue-600'
+    },
+    {
+      icon: Award,
+      title: 'Completely Free',
+      description: 'Access all resources without any cost or hidden fees',
+      color: 'text-purple-600'
+    }
+  ];
+
   const handleShowMaterials = () => {
     if (selectedBranch && selectedSemester) {
       console.log(`Showing materials for ${selectedBranch} - ${selectedSemester}`);
@@ -223,23 +257,29 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section with Enhanced Animations */}
       <section className="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+              <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight transition-all duration-1000 ${
+                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
                 Your Diploma Studies,{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                   Simplified
                 </span>
               </h1>
-              <p className="mt-6 text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
+              <p className={`mt-6 text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl transition-all duration-1000 delay-200 ${
+                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
                 Get access to the latest syllabus, practicals, assignments, and micro-projects for your branch. 
                 Everything you need for your polytechnic journey, in one place.
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <div className={`mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start transition-all duration-1000 delay-400 ${
+                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
                 <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                   Explore Resources Now
                 </button>
@@ -249,7 +289,9 @@ function App() {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+              <div className={`bg-white rounded-2xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-all duration-500 animate-float ${
+                isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
                 <div className="flex items-center space-x-3 mb-6">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                     <BookOpen className="w-6 h-6 text-blue-600" />
@@ -260,15 +302,15 @@ function App() {
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                     <span className="text-sm font-medium text-gray-700">Computer Engineering</span>
                     <span className="text-xs text-blue-600 font-semibold">350+ Files</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                     <span className="text-sm font-medium text-gray-700">Mechanical Engineering</span>
                     <span className="text-xs text-green-600 font-semibold">280+ Files</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                  <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                     <span className="text-sm font-medium text-gray-700">Electrical Engineering</span>
                     <span className="text-xs text-purple-600 font-semibold">320+ Files</span>
                   </div>
@@ -310,8 +352,69 @@ function App() {
         </div>
       </section>
 
-      {/* Find Your Materials Section */}
+      {/* NEW: Trending This Week Section */}
       <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <Flame className="w-8 h-8 text-orange-500 animate-pulse" />
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Trending This Week</h2>
+            </div>
+            <p className="text-lg text-gray-600">Most popular resources among students right now</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {trendingMaterials.map((item) => (
+              <div
+                key={item.id}
+                className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border border-orange-100 hover:shadow-lg transition-all duration-200 cursor-pointer group hover:-translate-y-1"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex items-center space-x-2">
+                    <Zap className="w-4 h-4 text-orange-500" />
+                    <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-100 text-orange-800">
+                      TRENDING
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <Star className="w-3 h-3 text-yellow-400 fill-current" />
+                    <span className="text-xs text-gray-600">{item.rating}</span>
+                  </div>
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-1">{item.subject}</p>
+                <p className="text-xs text-gray-500 mb-4">{item.semester}</p>
+                <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-1">
+                      <Download className="w-3 h-3" />
+                      <span>{item.downloads}</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Eye className="w-3 h-3" />
+                      <span>{item.views}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-1 text-green-600 font-semibold">
+                    <TrendingUp className="w-3 h-3" />
+                    <span>{item.weeklyGrowth}</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <button className="text-orange-600 hover:text-orange-700 text-sm font-medium">
+                    Download Now
+                  </button>
+                  <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-orange-600 group-hover:translate-x-1 transition-all duration-200" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Find Your Materials Section */}
+      <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Get Started: Find Your Study Material</h2>
@@ -392,65 +495,35 @@ function App() {
         </div>
       </section>
 
-      {/* Trending Materials Section */}
-      <section className="py-16 bg-gray-50">
+      {/* Trust Building Section */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <TrendingUp className="w-8 h-8 text-orange-500" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Trending Study Materials</h2>
-            </div>
-            <p className="text-lg text-gray-600">Most popular downloads this week</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">For Students & Teachers</h2>
+            <p className="mt-4 text-lg text-gray-600">Why thousands trust College Sahayak for their educational needs</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {trendingMaterials.map((item) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer group hover:-translate-y-1"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <span className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                    item.trending ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800'
-                  }`}>
-                    {item.trending ? 'TRENDING' : item.type}
-                  </span>
-                  <div className="flex items-center space-x-1">
-                    <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                    <span className="text-xs text-gray-600">{item.rating}</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {trustFeatures.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className="text-center p-6 rounded-xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-200"
+                >
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-white shadow-md flex items-center justify-center ${feature.color}`}>
+                    <IconComponent className="w-8 h-8" />
                   </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600 mb-1">{item.subject}</p>
-                <p className="text-xs text-gray-500 mb-4">{item.semester}</p>
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex items-center space-x-1">
-                      <Download className="w-3 h-3" />
-                      <span>{item.downloads}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Eye className="w-3 h-3" />
-                      <span>{item.views}</span>
-                    </div>
-                  </div>
-                  <span>{item.uploadDate}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
-                    Download Now
-                  </button>
-                  <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-200" />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Official Updates from MSBTE */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center space-x-2 mb-4">
@@ -503,7 +576,7 @@ function App() {
       </section>
 
       {/* Student Reviews Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center space-x-2 mb-4">
@@ -546,7 +619,7 @@ function App() {
       </section>
 
       {/* Important Links Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center space-x-2 mb-4">
