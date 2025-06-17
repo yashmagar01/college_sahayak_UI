@@ -1,0 +1,299 @@
+/* Syllabus page specific styles */
+
+/* Branch selection cards */
+.branch-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.branch-card:nth-child(1) { animation-delay: 0.1s; }
+.branch-card:nth-child(2) { animation-delay: 0.15s; }
+.branch-card:nth-child(3) { animation-delay: 0.2s; }
+.branch-card:nth-child(4) { animation-delay: 0.25s; }
+.branch-card:nth-child(5) { animation-delay: 0.3s; }
+.branch-card:nth-child(6) { animation-delay: 0.35s; }
+
+.branch-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.branch-card.selected {
+    border-color: #2563eb !important;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+}
+
+.branch-card.selected .branch-icon {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    transform: scale(1.1);
+}
+
+.branch-card.selected .branch-name {
+    color: #1e40af !important;
+    font-weight: 600;
+}
+
+/* Branch icons */
+.branch-icon {
+    transition: all 0.3s ease;
+}
+
+/* Semester buttons */
+.semester-btn {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.semester-btn:nth-child(1) { animation-delay: 0.1s; }
+.semester-btn:nth-child(2) { animation-delay: 0.15s; }
+.semester-btn:nth-child(3) { animation-delay: 0.2s; }
+.semester-btn:nth-child(4) { animation-delay: 0.25s; }
+.semester-btn:nth-child(5) { animation-delay: 0.3s; }
+.semester-btn:nth-child(6) { animation-delay: 0.35s; }
+
+.semester-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.semester-btn.selected {
+    border-color: #f97316 !important;
+    background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%) !important;
+    color: #9a3412 !important;
+    font-weight: 600;
+    box-shadow: 0 6px 12px rgba(249, 115, 22, 0.2);
+}
+
+/* Syllabus display animations */
+.syllabus-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Subject table rows */
+.subject-row {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInLeft 0.5s ease-out forwards;
+    transition: all 0.2s ease;
+}
+
+.subject-row:nth-child(1) { animation-delay: 0.1s; }
+.subject-row:nth-child(2) { animation-delay: 0.15s; }
+.subject-row:nth-child(3) { animation-delay: 0.2s; }
+.subject-row:nth-child(4) { animation-delay: 0.25s; }
+.subject-row:nth-child(5) { animation-delay: 0.3s; }
+.subject-row:nth-child(6) { animation-delay: 0.35s; }
+.subject-row:nth-child(7) { animation-delay: 0.4s; }
+.subject-row:nth-child(8) { animation-delay: 0.45s; }
+
+.subject-row:hover {
+    background-color: #f8fafc;
+    transform: translateX(4px);
+}
+
+/* Action buttons in table */
+.action-btn {
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+}
+
+.download-btn {
+    border: 2px solid #6b7280;
+    color: #6b7280;
+    background: transparent;
+}
+
+.download-btn:hover {
+    border-color: #374151;
+    color: #374151;
+    background-color: #f9fafb;
+}
+
+.topics-btn {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+}
+
+.topics-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Step indicators */
+.step-indicator {
+    transition: all 0.3s ease;
+}
+
+.step-indicator.completed {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* Breadcrumb styling */
+.breadcrumb-link {
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+    color: #2563eb;
+}
+
+/* Loading states */
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .branch-card {
+        margin-bottom: 1rem;
+    }
+    
+    .semester-btn {
+        margin-bottom: 0.5rem;
+    }
+    
+    .subject-row {
+        font-size: 0.875rem;
+    }
+    
+    .action-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Table responsive styling */
+@media (max-width: 640px) {
+    .subjects-table {
+        font-size: 0.875rem;
+    }
+    
+    .subjects-table th,
+    .subjects-table td {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .action-btn {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .action-btn span {
+        display: none;
+    }
+}
+
+/* Custom scrollbar for table */
+.overflow-x-auto::-webkit-scrollbar {
+    height: 6px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Enhanced focus states for accessibility */
+.branch-card:focus,
+.semester-btn:focus,
+.action-btn:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .syllabus-display {
+        box-shadow: none !important;
+        border: 1px solid #e5e7eb !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .branch-card.selected {
+        border-width: 3px;
+    }
+    
+    .semester-btn.selected {
+        border-width: 3px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .branch-card,
+    .semester-btn,
+    .subject-row {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+    
+    .branch-card:hover,
+    .semester-btn:hover,
+    .subject-row:hover {
+        transform: none;
+    }
+}
