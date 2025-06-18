@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download lab practicals and experiment solutions for polytechnic diploma students. Access ready-to-use practical files for all engineering branches.">
+    <meta name="keywords" content="lab practicals, experiments, polytechnic, diploma, engineering, Maharashtra, practical solutions">
+    <title>Lab Practicals - College Sahayak</title>
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Open Graph meta tags for social sharing -->
+    <meta property="og:title" content="Lab Practicals - College Sahayak">
+    <meta property="og:description" content="Download ready-to-use lab practicals and experiment solutions for polytechnic students.">
+    <meta property="og:type" content="website">
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#2563EB">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="lab-practicals.css">
+</head>
+<body>
+    <div class="min-h-screen bg-white">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                            <i data-lucide="book-open" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">College Sahayak</span>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+                            <span>Home</span>
+                        </a>
+                        <a href="#" class="text-blue-600 hover:text-blue-700 transition-colors font-medium flex items-center space-x-1">
+                            <i data-lucide="book-open" class="w-4 h-4"></i>
+                            <span>Resources</span>
+                        </a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+                            <i data-lucide="log-in" class="w-4 h-4"></i>
+                            <span>Login/Register</span>
+                        </a>
+                        <a href="about.html" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+                            <i data-lucide="user" class="w-4 h-4"></i>
+                            <span>About Us</span>
+                        </a>
+                        <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center space-x-1">
+                            <i data-lucide="message-square" class="w-4 h-4"></i>
+                            <span>Feedback</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Breadcrumbs -->
+        <section class="bg-gray-50 py-4">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <nav class="flex items-center space-x-2 text-sm">
+                    <a href="index.html" class="text-blue-600 hover:text-blue-700 transition-colors flex items-center">
+                        <i data-lucide="home" class="w-4 h-4 mr-1"></i>
+                        Home
+                    </a>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                    <a href="#" class="text-blue-600 hover:text-blue-700 transition-colors">Resources</a>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                    <span class="text-gray-600 font-medium">Lab Practicals</span>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Main Title Section -->
+        <section class="py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="flex items-center justify-center space-x-3 mb-6">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
+                        <i data-lucide="settings" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-gray-900">
+                        Find Your Lab Practicals
+                    </h1>
+                </div>
+                <p class="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                    Download ready-to-use practical solutions and files. Complete experiment guides, 
+                    code samples, and documentation for all your lab work.
+                </p>
+            </div>
+        </section>
+
+        <!-- Filter & Search Section -->
+        <section class="py-8 bg-white border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6 lg:p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
+                        <!-- Branch Dropdown -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Select Branch</label>
+                            <div class="relative">
+                                <select id="branch-select" class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 appearance-none cursor-pointer">
+                                    <option value="">Choose Branch</option>
+                                    <option value="computer">Computer Engineering</option>
+                                    <option value="it">Information Technology</option>
+                                    <option value="mechanical">Mechanical Engineering</option>
+                                    <option value="electrical">Electrical Engineering</option>
+                                    <option value="electronics">Electronics Engineering</option>
+                                    <option value="civil">Civil Engineering</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Semester Dropdown -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Select Semester</label>
+                            <div class="relative">
+                                <select id="semester-select" class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 appearance-none cursor-pointer">
+                                    <option value="">Choose Semester</option>
+                                    <option value="1">Semester I</option>
+                                    <option value="2">Semester II</option>
+                                    <option value="3">Semester III</option>
+                                    <option value="4">Semester IV</option>
+                                    <option value="5">Semester V</option>
+                                    <option value="6">Semester VI</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Subject Dropdown -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Select Subject</label>
+                            <div class="relative">
+                                <select id="subject-select" class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 appearance-none cursor-pointer" disabled>
+                                    <option value="">Choose Subject</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Search Bar -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium text-gray-700">Search</label>
+                            <div class="relative">
+                                <input 
+                                    type="text" 
+                                    id="search-input"
+                                    placeholder="Search by experiment name or keyword..."
+                                    class="w-full px-4 py-3 pl-10 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                >
+                                <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clear Filters Button -->
+                    <div class="mt-6 flex justify-center">
+                        <button id="clear-filters" class="px-6 py-2 text-gray-600 hover:text-gray-800 border border-gray-300 hover:border-gray-400 rounded-lg transition-all duration-200 flex items-center space-x-2">
+                            <i data-lucide="x" class="w-4 h-4"></i>
+                            <span>Clear All Filters</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="py-12 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Results Header -->
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900">Lab Practicals</h2>
+                        <p id="results-count" class="text-gray-600 mt-1">Select filters to view practicals</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <!-- Sort Dropdown -->
+                        <div class="relative">
+                            <select id="sort-select" class="px-4 py-2 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 appearance-none cursor-pointer">
+                                <option value="name">Sort by Name</option>
+                                <option value="subject">Sort by Subject</option>
+                                <option value="downloads">Most Downloaded</option>
+                                <option value="recent">Recently Added</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-3 h-3 text-gray-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Default Message -->
+                <div id="default-message" class="text-center py-16">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
+                        <i data-lucide="settings" class="w-12 h-12 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Ready to Find Your Practicals?</h3>
+                    <p class="text-gray-600 max-w-md mx-auto">
+                        Please select a branch and semester to see the available lab practicals and experiments.
+                    </p>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="no-results" class="text-center py-16 hidden">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-orange-100 to-red-100 rounded-full flex items-center justify-center">
+                        <i data-lucide="search-x" class="w-12 h-12 text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">No Practicals Found</h3>
+                    <p class="text-gray-600 max-w-md mx-auto">
+                        Try adjusting your filters or search terms to find the practicals you're looking for.
+                    </p>
+                </div>
+
+                <!-- Practicals Grid -->
+                <div id="practicals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 hidden">
+                    <!-- Practicals will be populated by JavaScript -->
+                </div>
+
+                <!-- Load More Button -->
+                <div id="load-more-section" class="text-center mt-12 hidden">
+                    <button id="load-more-btn" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center space-x-2 mx-auto">
+                        <span>Load More Practicals</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- About College Sahayak -->
+                    <div>
+                        <div class="flex items-center space-x-2 mb-4">
+                            <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center">
+                                <i data-lucide="book-open" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <span class="text-xl font-bold">College Sahayak</span>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            Empowering polytechnic diploma students across Maharashtra with comprehensive study materials, 
+                            practicals, and resources for academic excellence.
+                        </p>
+                        <div class="space-y-2 text-sm text-gray-400">
+                            <div class="flex items-center">
+                                <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>
+                                <span>Maharashtra, India</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
+                                <span>support@collegesahayak.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Essential Links -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Essential Links</h3>
+                        <ul class="space-y-3">
+                            <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">All Resources</a></li>
+                            <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact Support</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Connect With Us -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Follow us for updates, study tips, and educational content.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-colors">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-400 hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors">
+                                <i data-lucide="twitter" class="w-5 h-5"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-pink-600 hover:bg-pink-700 rounded-lg flex items-center justify-center transition-colors">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Bar -->
+                <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 College Sahayak. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="lab-practicals.js"></script>
+</body>
+</html>
