@@ -217,11 +217,11 @@ button:focus {
     transform: translateY(-4px);
 }
 
-.lab-manual-card {
+.subject-card {
     transition: all 0.3s ease;
 }
 
-.lab-manual-card:hover {
+.subject-card:hover {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 

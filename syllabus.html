@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Sahayak - Syllabus</title>
-    <link rel="stylesheet" href="lab-practicals.css">
+    <link rel="stylesheet" href="syllabus.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.344.0/lucide.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <div class="min-h-screen bg-gray-50">
@@ -23,16 +24,16 @@
 
                     <!-- Navigation -->
                     <nav class="hidden md:flex items-center space-x-8">
-                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
-                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium flex items-center">
+                        <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                        <a href="{% url 'resources' %}" class="text-gray-700 hover:text-blue-600 font-medium flex items-center">
                             <i data-lucide="book-open" class="w-4 h-4 mr-1"></i>
                             Resources
                         </a>
-                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Login/Register</a>
-                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About Us</a>
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
-                            Feedback
-                        </button>
+                        <a href="{% url 'register' %}" class="text-gray-700 hover:text-blue-600 font-medium">Login/Register</a>
+                        <a href="{% url 'about_us' %}" class="text-gray-700 hover:text-blue-600 font-medium">About Us</a>
+                        <a href="{% url 'contact_us' %}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Contact Us
+                        </a>
                     </nav>
                 </div>
             </div>
@@ -42,19 +43,23 @@
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <!-- Breadcrumb -->
             <nav id="breadcrumb" class="flex items-center space-x-2 text-sm text-gray-600 mb-8">
-                <i data-lucide="home" class="w-4 h-4"></i>
-                <span>Home</span>
-                <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                <button id="breadcrumb-syllabus" class="hover:text-blue-600 transition-colors text-blue-600 font-medium">
-                    Syllabus
-                </button>
+                <a href="{% url 'home' %}" class="flex items-center text-blue-600 hover:underline">
+                    <i data-lucide="home" class="w-4 h-4 mr-1"></i>
+                    Home
+                </a>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                <a href="{% url 'resources' %}" class="text-blue-600 hover:underline">
+                    Resources
+                </a>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                <span class="font-medium text-gray-900">Syllabus</span>
                 <span id="breadcrumb-branch" class="hidden">
-                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                    <button id="breadcrumb-branch-btn" class="hover:text-blue-600 transition-colors"></button>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                    <button id="breadcrumb-branch-btn" class="text-blue-600 hover:underline"></button>
                 </span>
                 <span id="breadcrumb-semester" class="hidden">
-                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                    <span class="text-blue-600 font-medium" id="breadcrumb-semester-text"></span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                    <span class="text-gray-900 font-medium" id="breadcrumb-semester-text"></span>
                 </span>
             </nav>
 
@@ -224,6 +229,16 @@
     </div>
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <script src="script.js"></script>
+    <script src="syllabus.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Any initialization code can go here
+            console.log('Syllabus page loaded');
+        });
+    </script>
 </body>
 </html>
