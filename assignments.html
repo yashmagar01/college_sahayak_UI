@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Sahayak - Assignments</title>
+    <link rel="stylesheet" href="syllabus.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.344.0/lucide.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="min-h-screen bg-gray-50">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-blue-500 rounded-sm flex items-center justify-center">
+                            <i data-lucide="book-open" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">College Sahayak</span>
+                    </div>
+
+                    <!-- Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                        <a href="{% url 'resources' %}" class="text-blue-600 font-medium flex items-center border-b-2 border-blue-600">
+                            <i data-lucide="book-open" class="w-4 h-4 mr-1"></i>
+                            Resources
+                        </a>
+                        <a href="{% url 'register' %}" class="text-gray-700 hover:text-blue-600 font-medium">Login/Register</a>
+                        <a href="{% url 'about_us' %}" class="text-gray-700 hover:text-blue-600 font-medium">About Us</a>
+                        <a href="{% url 'contact_us' %}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Contact Us
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="px-4 py-6 sm:px-0">
+                <h1 class="text-3xl font-bold text-gray-900 mb-8">Assignments</h1>
+                
+                <!-- Assignment resources will be loaded here -->
+                <div id="assignments-container" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Assignments will be loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.344.0/lucide.min.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // You can add JavaScript to load assignments here
+    </script>
+</body>
+</html>

@@ -32,10 +32,10 @@ const semesters = [
 
 const quickResources = [
     { id: 'syllabus', name: 'Syllabus', icon: 'book-open', color: 'bg-blue-500', description: 'Latest curriculum', url: 'syllabus.html' },
-    { id: 'practicals', name: 'Lab Manuals', icon: 'settings', color: 'bg-green-500', description: 'Hands-on experiments', url: 'lab-practicals.html' },
+    { id: 'practicals', name: 'Lab Manuals', icon: 'settings', color: 'bg-green-500', description: 'Hands-on experiments', url: 'lab-manuals.html' },
     { id: 'assignments', name: 'Assignments', icon: 'file-text', color: 'bg-purple-500', description: 'Practice problems', url: 'assignments.html' },
     { id: 'projects', name: 'Micro-Projects', icon: 'lightbulb', color: 'bg-orange-500', description: 'Project ideas', url: 'micro-projects.html' },
-    { id: 'papers', name: 'Question Papers', icon: 'clipboard-list', color: 'bg-red-500', description: 'Previous year papers', url: 'question-papers.html' }
+    { id: 'papers', name: 'Question Papers', icon: 'clipboard-list', color: 'bg-red-500', description: 'Previous year papers', url: 'question-paper.html' }
 ];
 
 const trendingMaterials = [
@@ -199,17 +199,19 @@ function initializeApp() {
 function renderQuickResources() {
     const container = document.getElementById('quick-resources');
     container.innerHTML = quickResources.map(resource => `
-        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer group hover:-translate-y-1" style="transform: translateY(0);">
-            <div class="w-12 h-12 ${resource.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
-                <i data-lucide="${resource.icon}" class="w-6 h-6 text-white"></i>
+        <a href="${resource.url}" class="block no-underline">
+            <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer group hover:-translate-y-1" style="transform: translateY(0);">
+                <div class="w-12 h-12 ${resource.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
+                    <i data-lucide="${resource.icon}" class="w-6 h-6 text-white"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">${resource.name}</h3>
+                <p class="text-sm text-gray-600">${resource.description}</p>
+                <div class="mt-4 flex items-center text-blue-600 text-sm font-medium group-hover:text-blue-700">
+                    <span>Access Now</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"></i>
+                </div>
             </div>
-            <h3 class="font-semibold text-gray-900 mb-2">${resource.name}</h3>
-            <p class="text-sm text-gray-600">${resource.description}</p>
-            <div class="mt-4 flex items-center text-blue-600 text-sm font-medium group-hover:text-blue-700">
-                <span>Access Now</span>
-                <i data-lucide="chevron-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"></i>
-            </div>
-        </div>
+        </a>
     `).join('');
     lucide.createIcons();
 }
