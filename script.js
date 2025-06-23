@@ -31,11 +31,11 @@ const semesters = [
 ];
 
 const quickResources = [
-    { id: 'syllabus', name: 'Syllabus', icon: 'book-open', color: 'bg-blue-500', description: 'Latest curriculum', url: 'syllabus.html' },
-    { id: 'practicals', name: 'Lab Manuals', icon: 'settings', color: 'bg-green-500', description: 'Hands-on experiments', url: 'lab-manuals.html' },
-    { id: 'assignments', name: 'Assignments', icon: 'file-text', color: 'bg-purple-500', description: 'Practice problems', url: 'assignments.html' },
-    { id: 'projects', name: 'Micro-Projects', icon: 'lightbulb', color: 'bg-orange-500', description: 'Project ideas', url: 'micro-projects.html' },
-    { id: 'papers', name: 'Question Papers', icon: 'clipboard-list', color: 'bg-red-500', description: 'Previous year papers', url: 'question-paper.html' }
+    { id: 'syllabus', name: 'Syllabus', icon: 'book-open', color: 'bg-blue-500', description: 'Latest curriculum', url: 'syllabus/syllabus.html' },
+    { id: 'practicals', name: 'Lab Manuals', icon: 'settings', color: 'bg-green-500', description: 'Hands-on experiments', url: 'lab_manual/lab-manuals.html' },
+    { id: 'assignments', name: 'Assignments', icon: 'file-text', color: 'bg-purple-500', description: 'Practice problems', url: 'assignment/assignments.html' },
+    { id: 'projects', name: 'Micro-Projects', icon: 'lightbulb', color: 'bg-orange-500', description: 'Project ideas', url: 'microproject/microproject.html' },
+    { id: 'papers', name: 'Question Papers', icon: 'clipboard-list', color: 'bg-red-500', description: 'Previous year papers', url: 'question_paper/question-paper.html' }
 ];
 
 const trendingMaterials = [

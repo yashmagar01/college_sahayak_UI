@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Sahayak - Assignments</title>
+    <link rel="stylesheet" href="assignments-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.344.0/lucide.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="min-h-screen bg-gray-50">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-blue-500 rounded-sm flex items-center justify-center">
+                            <i data-lucide="book-open" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">College Sahayak</span>
+                    </div>
+
+                    <!-- Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium flex items-center">
+                            <i data-lucide="book-open" class="w-4 h-4 mr-1"></i>
+                            Resources
+                        </a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Login/Register</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About Us</a>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Feedback
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Breadcrumb -->
+            <nav id="breadcrumb" class="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+                <i data-lucide="home" class="w-4 h-4"></i>
+                <span>Home</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <button id="breadcrumb-assignments" class="hover:text-blue-600 transition-colors text-blue-600 font-medium">
+                    Assignments
+                </button>
+                <span id="breadcrumb-branch" class="hidden">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    <button id="breadcrumb-branch-btn" class="hover:text-blue-600 transition-colors"></button>
+                </span>
+                <span id="breadcrumb-semester" class="hidden">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    <span class="text-blue-600 font-medium" id="breadcrumb-semester-text"></span>
+                </span>
+            </nav>
+
+            <!-- Branch Selection View -->
+            <div id="branch-selection" class="space-y-8">
+                <!-- Page Header -->
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        Access Assignments, <span class="text-blue-600">Simplified</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Select your branch to view subject-wise assignments and practice problems.
+                    </p>
+                </div>
+
+                <!-- Branch Selection Grid -->
+                <div id="branches-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <!-- Branch cards will be populated by JavaScript -->
+                </div>
+
+                <!-- Additional Info Section -->
+                <div class="mt-16 bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                    <div class="text-center">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            Why Use Our Assignment Resources?
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="clipboard-check" class="w-6 h-6 text-blue-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Structured Learning</h3>
+                                <p class="text-gray-600 text-sm">Well-organized assignments following MSBTE curriculum</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="brain" class="w-6 h-6 text-green-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Skill Development</h3>
+                                <p class="text-gray-600 text-sm">Practice problems to enhance understanding and skills</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="award" class="w-6 h-6 text-purple-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Grade Improvement</h3>
+                                <p class="text-gray-600 text-sm">Regular practice to improve academic performance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semester Selection View -->
+            <div id="semester-selection" class="space-y-8 hidden">
+                <!-- Page Header -->
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        Choose Your <span class="text-blue-600">Semester</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Select the semester for <span id="selected-branch-name"></span> assignment resources.
+                    </p>
+                </div>
+
+                <!-- Semester Selection Grid -->
+                <div id="semesters-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <!-- Semester cards will be populated by JavaScript -->
+                </div>
+
+                <!-- Additional Info -->
+                <div class="mt-16 bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                    <div class="text-center">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            Assignment Learning Process
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="book-open" class="w-6 h-6 text-blue-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Study Material</h3>
+                                <p class="text-gray-600 text-sm">Review concepts before attempting assignments</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="edit" class="w-6 h-6 text-green-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Practice Problems</h3>
+                                <p class="text-gray-600 text-sm">Solve assignments to reinforce learning</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="check-circle" class="w-6 h-6 text-purple-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Self Assessment</h3>
+                                <p class="text-gray-600 text-sm">Evaluate progress and identify improvement areas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assignment Listing View -->
+            <div id="assignment-listing" class="space-y-8 hidden">
+                <!-- Page Header -->
+                <div class="text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        <span class="text-blue-600" id="selected-semester-name"></span> Assignments
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        <span id="selected-branch-name-assignments"></span> - Semester <span id="selected-semester-number"></span> assignment resources
+                    </p>
+                </div>
+
+                <!-- Assignments Grid -->
+                <div id="assignments-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+                    <!-- Assignment cards will be populated by JavaScript -->
+                </div>
+
+                <!-- No Assignments Message -->
+                <div id="no-assignments" class="text-center py-12 hidden">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="clipboard" class="w-8 h-8 text-gray-400"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                        No Assignments Available
+                    </h3>
+                    <p class="text-gray-600">
+                        Assignment resources for this semester are being updated. Please check back later.
+                    </p>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="mt-16 bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                    <div class="text-center">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            Assignment Information
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="star" class="w-6 h-6 text-blue-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Quality Content</h3>
+                                <p class="text-gray-600 text-sm">All assignments are prepared by experienced faculty</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="download" class="w-6 h-6 text-green-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Easy Download</h3>
+                                <p class="text-gray-600 text-sm">Download assignments and solutions for offline practice</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i data-lucide="external-link" class="w-6 h-6 text-purple-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Online Access</h3>
+                                <p class="text-gray-600 text-sm">View assignments directly in your browser</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="assignments-script.js"></script>
+</body>
+</html>
