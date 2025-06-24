@@ -1,11 +1,93 @@
-// Initialize Lucide icons
+// Initialize Lucide icons and mobile menu
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Lucide icons
     lucide.createIcons();
     
+    // Initialize mobile menu toggle
+    setupMobileMenu();
+    
     // Initialize the application
     initializeApp();
 });
+
+// Mobile menu functionality
+function setupMobileMenu() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+        
+        // Toggle menu visibility with animation
+        if (isExpanded) {
+            // Close menu
+            mobileMenu.style.animation = 'slideOutUp 0.2s ease-out forwards';
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            
+            // After animation completes, hide the menu and re-enable scrolling
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = 'auto';
+            }, 200);
+        } else {
+            // Open menu
+            document.body.classList.add('menu-open');
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.style.animation = 'slideInDown 0.3s ease-out forwards';
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    // Toggle menu on button click
+    if (mobileMenuButton && mobileMenu) {
+        // Initialize menu state
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('hidden');
+        
+        mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            }
+        });
+        
+        // Close menu when a menu item is clicked
+        const menuItems = mobileMenu.querySelectorAll('a');
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+        
+        // Close menu on window resize if it becomes desktop view
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
+                    toggleMobileMenu();
+                }
+            }, 250);
+        });
+    }
+}
 
 // Application state
 let selectedBranch = '';

@@ -11,6 +11,17 @@ body {
     color: #111827;
 }
 
+/* Responsive Utilities */
+@media (min-width: 768px) {
+    .md\:block { display: block !important; }
+    .md\:flex { display: flex !important; }
+    .md\:hidden { display: none !important; }
+    .md\:ml-6 { margin-left: 1.5rem !important; }
+    .md\:space-x-4 > * + * { margin-left: 1rem !important; }
+    .md\:space-x-6 > * + * { margin-left: 1.5rem !important; }
+    .md\:px-6 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+}
+
 /* Utility Classes */
 .min-h-screen { min-height: 100vh; }
 .bg-white { background-color: #ffffff; }
@@ -187,7 +198,75 @@ body {
 .transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
 .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
 .duration-200 { transition-duration: 200ms; }
+.duration-300 { transition-duration: 300ms; }
 .duration-500 { transition-duration: 500ms; }
+
+/* Mobile Menu Animation */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes slideOutUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Mobile Menu Styles */
+#mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transform-origin: top;
+    transition: all 0.3s ease-in-out;
+}
+
+#mobile-menu.hidden {
+    display: none;
+}
+
+#mobile-menu > div {
+    padding: 0.5rem 0;
+}
+
+/* Mobile menu links */
+#mobile-menu a {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Mobile menu toggle button */
+#mobile-menu-button {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Hide scrollbar when menu is open */
+body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
 
 /* Hover effects */
 .hover\:bg-gray-100:hover { background-color: #f3f4f6; }
@@ -368,6 +447,13 @@ a {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    max-height: 3em; /* fallback for line-clamp */
 }
 
 /* Custom styles for selected states */
