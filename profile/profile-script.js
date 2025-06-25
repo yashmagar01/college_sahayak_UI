@@ -5,6 +5,7 @@ class ProfileManager {
         this.originalData = {};
         this.initializeEventListeners();
         this.loadTheme();
+        this.setupInitials();
     }
 
     initializeEventListeners() {
@@ -28,9 +29,11 @@ class ProfileManager {
             this.toggleTheme();
         });
 
-        // Change Photo Button (placeholder functionality)
+        // Change Photo Button (now shows initials instead of changing photo)
         document.getElementById('change-photo-btn').addEventListener('click', () => {
-            this.changePhoto();
+            // Since we're using initials, we'll just update the initials if needed
+            const name = document.getElementById('name-display').textContent;
+            this.updateUserInitials(name);
         });
     }
 
@@ -60,50 +63,54 @@ class ProfileManager {
     }
 
     saveProfile() {
-        // Get new values
-        const newData = {
-            name: document.getElementById('name-input').value.trim(),
-            email: document.getElementById('email-input').value.trim(),
-            branch: document.getElementById('branch-input').value,
-            semester: document.getElementById('semester-input').value,
-            college: document.getElementById('college-input').value.trim(),
-            bio: document.getElementById('bio-input').value.trim()
-        };
-
-        // Validate required fields
-        if (!newData.name || !newData.email || !newData.college) {
-            alert('Please fill in all required fields (Name, Email, College)');
-            return;
-        }
-
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(newData.email)) {
-            alert('Please enter a valid email address');
-            return;
-        }
+        // Get values from inputs
+        const name = document.getElementById('name-input').value;
+        const email = document.getElementById('email-input').value;
+        const branch = document.getElementById('branch-input').value;
+        const semester = document.getElementById('semester-input').value;
+        const college = document.getElementById('college-input').value;
+        const bio = document.getElementById('bio-input').value;
 
         // Update display fields
-        document.getElementById('name-display').textContent = newData.name;
-        document.getElementById('email-display').textContent = newData.email;
-        document.getElementById('branch-display').textContent = newData.branch;
-        document.getElementById('semester-display').textContent = newData.semester;
-        document.getElementById('college-display').textContent = newData.college;
-        document.getElementById('bio-display').textContent = newData.bio;
+        document.getElementById('name-display').textContent = name;
+        document.getElementById('email-display').textContent = email;
+        document.getElementById('branch-display').textContent = branch;
+        document.getElementById('semester-display').textContent = semester;
+        document.getElementById('college-display').textContent = college;
+        document.getElementById('bio-display').textContent = bio;
 
-        // Update welcome name
-        const firstName = newData.name.split(' ')[0];
-        document.getElementById('welcome-name').textContent = firstName;
+        // Update welcome name if it exists
+        const welcomeName = document.getElementById('welcome-name');
+        if (welcomeName) {
+            welcomeName.textContent = name.split(' ')[0];
+        }
 
-        // Save to localStorage
-        localStorage.setItem('userProfile', JSON.stringify(newData));
+        // Update user initials when name changes
+        this.updateUserInitials(name);
 
-        // Exit edit mode
-        this.isEditing = false;
-        this.toggleEditMode(false);
-
-        // Show success message
-        this.showNotification('Profile updated successfully!', 'success');
+        this.cancelEditing();
+    }
+    
+    setupInitials() {
+        // Get the user's name from the display field
+        const name = document.getElementById('name-display').textContent;
+        this.updateUserInitials(name);
+    }
+    
+    updateUserInitials(fullName) {
+        // Generate initials from the full name
+        const initials = fullName
+            .split(' ')
+            .map(part => part[0])
+            .join('')
+            .toUpperCase()
+            .substring(0, 2); // Get max 2 characters
+            
+        // Update the initials in the DOM
+        const initialsElement = document.getElementById('user-initials');
+        if (initialsElement) {
+            initialsElement.textContent = initials;
+        }
     }
 
     cancelEditing() {
@@ -474,15 +481,13 @@ const utils = {
     
     // Generate random avatar
     generateAvatar(name) {
-        const colors = ['#4f46e5', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
-        const color = colors[name.length % colors.length];
-        const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+        const colors = ['#4f46e5', '#7c3aed', '#6366f1', '#8b5cf6'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
         
-        return `data:image/svg+xml,${encodeURIComponent(`
-            <svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
-                <rect width="150" height="150" fill="${color}"/>
-                <text x="75" y="85" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="white">${initials}</text>
-            </svg>
-        `)}`;
+        return {
+            initials,
+            color: randomColor
+        };
     }
 };
