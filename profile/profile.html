@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Sahayak - Profile</title>
+    <link rel="stylesheet" href="profile-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.344.0/lucide.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="min-h-screen bg-gray-50">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-blue-500 rounded-sm flex items-center justify-center">
+                            <i data-lucide="book-open" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">College Sahayak</span>
+                    </div>
+
+                    <!-- Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+                        <div class="relative group">
+                            <button class="text-gray-700 hover:text-blue-600 font-medium flex items-center">
+                                <i data-lucide="book-open" class="w-4 h-4 mr-1"></i>
+                                Resources
+                                <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                            </button>
+                            <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                <div class="py-2">
+                                    <a href="index.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Syllabus</a>
+                                    <a href="pyqs.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Previous Year Papers</a>
+                                    <a href="microproject.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Microprojects</a>
+                                    <a href="assignments.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600">Assignments</a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="auth.html" class="text-gray-700 hover:text-blue-600 font-medium">Login/Register</a>
+                        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">About Us</a>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Feedback
+                        </button>
+                    </nav>
+
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Breadcrumb -->
+            <nav class="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+                <i data-lucide="home" class="w-4 h-4"></i>
+                <span>Home</span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <span class="text-blue-600 font-medium">Profile</span>
+            </nav>
+
+            <!-- Profile Header -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-8">
+                <div class="flex flex-col md:flex-row items-start md:items-center space-y-6 md:space-y-0 md:space-x-8">
+                    <!-- Profile Picture -->
+                    <div class="relative">
+                        <div class="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-4xl font-bold">
+                            <span id="profile-initials">AS</span>
+                        </div>
+                        <button class="absolute bottom-2 right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white hover:bg-blue-600 transition-colors">
+                            <i data-lucide="camera" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Profile Info -->
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                            <div>
+                                <h1 class="text-3xl font-bold text-gray-900 mb-2" id="profile-name">Arjun Sharma</h1>
+                                <div class="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+                                    <div class="flex items-center">
+                                        <i data-lucide="graduation-cap" class="w-4 h-4 mr-1"></i>
+                                        <span id="profile-branch">Computer Engineering</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i data-lucide="calendar" class="w-4 h-4 mr-1"></i>
+                                        <span>Semester <span id="profile-semester">4</span></span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i data-lucide="building" class="w-4 h-4 mr-1"></i>
+                                        <span id="profile-college">Government Polytechnic Mumbai</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 max-w-2xl" id="profile-bio">
+                                    Passionate about software development and emerging technologies. Currently exploring web development, machine learning, and mobile app development. Always eager to learn and contribute to innovative projects.
+                                </p>
+                            </div>
+                            <div class="mt-4 md:mt-0">
+                                <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center">
+                                    <i data-lucide="edit" class="w-4 h-4 mr-2"></i>
+                                    Edit Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column -->
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- My Resources Dashboard -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-xl font-bold text-gray-900 flex items-center">
+                                <i data-lucide="folder" class="w-5 h-5 mr-2 text-blue-600"></i>
+                                My Resources
+                            </h2>
+                            <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">View All</button>
+                        </div>
+
+                        <!-- Resource Tabs -->
+                        <div class="flex space-x-1 bg-gray-100 rounded-lg p-1 mb-6">
+                            <button class="resource-tab active" data-tab="recent">Recently Viewed</button>
+                            <button class="resource-tab" data-tab="bookmarked">Bookmarked</button>
+                            <button class="resource-tab" data-tab="downloaded">Downloaded</button>
+                        </div>
+
+                        <!-- Resource Content -->
+                        <div id="resource-content">
+                            <!-- Recently Viewed -->
+                            <div class="resource-panel active" id="recent-panel">
+                                <div class="space-y-3">
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i data-lucide="file-text" class="w-5 h-5 text-blue-600"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-medium text-gray-900">Data Structures Syllabus</h4>
+                                            <p class="text-sm text-gray-500">Computer Engineering • Semester 4</p>
+                                        </div>
+                                        <span class="text-xs text-gray-400">2 hours ago</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i data-lucide="lightbulb" class="w-5 h-5 text-green-600"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-medium text-gray-900">Library Management System</h4>
+                                            <p class="text-sm text-gray-500">Microproject • Computer Engineering</p>
+                                        </div>
+                                        <span class="text-xs text-gray-400">1 day ago</span>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i data-lucide="clipboard-check" class="w-5 h-5 text-purple-600"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-medium text-gray-900">Programming Fundamentals Assignment</h4>
+                                            <p class="text-sm text-gray-500">Assignment • Semester 4</p>
+                                        </div>
+                                        <span class="text-xs text-gray-400">3 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bookmarked -->
+                            <div class="resource-panel" id="bookmarked-panel">
+                                <div class="space-y-3">
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                                        <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i data-lucide="star" class="w-5 h-5 text-yellow-600"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-medium text-gray-900">Engineering Mathematics Notes</h4>
+                                            <p class="text-sm text-gray-500">Important formulas and concepts</p>
+                                        </div>
+                                        <button class="text-yellow-500 hover:text-yellow-600">
+                                            <i data-lucide="bookmark" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                                        <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i data-lucide="file-text" class="w-5 h-5 text-red-600"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-medium text-gray-900">Previous Year Question Papers</h4>
+                                            <p class="text-sm text-gray-500">Computer Engineering 2023</p>
+                                        </div>
+                                        <button class="text-yellow-500 hover:text-yellow-600">
+                                            <i data-lucide="bookmark" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Downloaded -->
+                            <div class="resource-panel" id="downloaded-panel">
+                                <div class="space-y-3">
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i data-lucide="download" class="w-5 h-5 text-green-600"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-medium text-gray-900">Digital Electronics Syllabus.pdf</h4>
+                                            <p class="text-sm text-gray-500">Downloaded 2 days ago • 2.4 MB</p>
+                                        </div>
+                                        <button class="text-blue-600 hover:text-blue-700">
+                                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                            <i data-lucide="download" class="w-5 h-5 text-blue-600"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h4 class="font-medium text-gray-900">Microproject Guidelines.pdf</h4>
+                                            <p class="text-sm text-gray-500">Downloaded 1 week ago • 1.8 MB</p>
+                                        </div>
+                                        <button class="text-blue-600 hover:text-blue-700">
+                                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Tracker -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i data-lucide="trending-up" class="w-5 h-5 mr-2 text-green-600"></i>
+                            Learning Progress
+                        </h2>
+                        
+                        <div class="space-y-6">
+                            <!-- Overall Progress -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-gray-700">Overall Semester Progress</span>
+                                    <span class="text-sm text-gray-500">68%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 68%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Subject Progress */
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Data Structures</span>
+                                        <span class="text-sm text-green-600">85%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-green-500 h-1.5 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Digital Electronics</span>
+                                        <span class="text-sm text-blue-600">72%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-blue-500 h-1.5 rounded-full" style="width: 72%"></div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Mathematics</span>
+                                        <span class="text-sm text-yellow-600">58%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-yellow-500 h-1.5 rounded-full" style="width: 58%"></div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gray-50 rounded-lg">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Computer Organization</span>
+                                        <span class="text-sm text-purple-600">63%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                        <div class="bg-purple-500 h-1.5 rounded-full" style="width: 63%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activity Feed -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i data-lucide="activity" class="w-5 h-5 mr-2 text-purple-600"></i>
+                            Recent Activity
+                        </h2>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                    <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-900">Completed <strong>Programming Assignment #3</strong></p>
+                                    <p class="text-xs text-gray-500">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <i data-lucide="download" class="w-4 h-4 text-blue-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-900">Downloaded <strong>Digital Electronics Syllabus</strong></p>
+                                    <p class="text-xs text-gray-500">1 day ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                                    <i data-lucide="star" class="w-4 h-4 text-yellow-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm text-gray-900">Bookmarked <strong>Mathematics Formula Sheet</strong></p>
+                                    <p class="text-xs text-gray-500">3 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-8">
+                    <!-- Achievements -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i data-lucide="award" class="w-5 h-5 mr-2 text-yellow-600"></i>
+                            Achievements
+                        </h2>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border border-yellow-200">
+                                <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+                                    <i data-lucide="trophy" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">First Semester Complete</h4>
+                                    <p class="text-sm text-gray-600">Completed all subjects with 85% average</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                                    <i data-lucide="lightbulb" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Microproject Master</h4>
+                                    <p class="text-sm text-gray-600">Completed 5 microprojects successfully</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                    <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Top Contributor</h4>
+                                    <p class="text-sm text-gray-600">Helped 20+ students with resources</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i data-lucide="bar-chart" class="w-5 h-5 mr-2 text-blue-600"></i>
+                            Quick Stats
+                        </h2>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                <div class="text-2xl font-bold text-blue-600">47</div>
+                                <div class="text-sm text-gray-600">Resources Accessed</div>
+                            </div>
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <div class="text-2xl font-bold text-green-600">12</div>
+                                <div class="text-sm text-gray-600">Downloads</div>
+                            </div>
+                            <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                <div class="text-2xl font-bold text-purple-600">8</div>
+                                <div class="text-sm text-gray-600">Bookmarks</div>
+                            </div>
+                            <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                                <div class="text-2xl font-bold text-yellow-600">3</div>
+                                <div class="text-sm text-gray-600">Achievements</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-xl font-bold text-gray-900 flex items-center">
+                                <i data-lucide="bell" class="w-5 h-5 mr-2 text-orange-600"></i>
+                                Notifications
+                            </h2>
+                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                                <p class="text-sm font-medium text-gray-900">New syllabus update available</p>
+                                <p class="text-xs text-gray-600">Computer Engineering - Semester 4</p>
+                            </div>
+                            <div class="p-3 bg-yellow-50 border-l-4 border-yellow-500 rounded-r-lg">
+                                <p class="text-sm font-medium text-gray-900">Assignment deadline approaching</p>
+                                <p class="text-xs text-gray-600">Due in 2 days</p>
+                            </div>
+                            <div class="p-3 bg-green-50 border-l-4 border-green-500 rounded-r-lg">
+                                <p class="text-sm font-medium text-gray-900">New microproject ideas added</p>
+                                <p class="text-xs text-gray-600">Check out the latest projects</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Quick Access -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                            <i data-lucide="settings" class="w-5 h-5 mr-2 text-gray-600"></i>
+                            Quick Settings
+                        </h2>
+                        
+                        <div class="space-y-3">
+                            <button class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <div class="flex items-center">
+                                    <i data-lucide="moon" class="w-4 h-4 mr-3 text-gray-600"></i>
+                                    <span class="text-sm font-medium text-gray-900">Dark Mode</span>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="dark-mode-toggle" class="toggle-input">
+                                    <label for="dark-mode-toggle" class="toggle-label"></label>
+                                </div>
+                            </button>
+                            
+                            <button class="w-full flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <div class="flex items-center">
+                                    <i data-lucide="bell" class="w-4 h-4 mr-3 text-gray-600"></i>
+                                    <span class="text-sm font-medium text-gray-900">Notifications</span>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="notifications-toggle" class="toggle-input" checked>
+                                    <label for="notifications-toggle" class="toggle-label"></label>
+                                </div>
+                            </button>
+                            
+                            <button class="w-full flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i data-lucide="user" class="w-4 h-4 mr-3 text-gray-600"></i>
+                                <span class="text-sm font-medium text-gray-900">Account Settings</span>
+                            </button>
+                            
+                            <button class="w-full flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                                <i data-lucide="shield" class="w-4 h-4 mr-3 text-gray-600"></i>
+                                <span class="text-sm font-medium text-gray-900">Privacy Settings</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="profile-script.js"></script>
+</body>
+</html>
