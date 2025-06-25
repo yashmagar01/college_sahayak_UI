@@ -1,490 +1,488 @@
-// Profile Data
-const profileData = {
-    user: {
-        name: 'yash magar',
-        initials: 'YM',
-        branch: 'Computer Engineering',
-        semester: 3,
-        college: 'Government Polytechnic Awasari(kh.)',
-        bio: 'Passionate about software development and emerging technologies. Currently exploring web development, machine learning, and mobile app development. Always eager to learn and contribute to innovative projects.',
-        avatar: null
-    },
-    
-    resources: {
-        recent: [
-            {
-                id: 1,
-                title: 'Data Structures Syllabus',
-                type: 'Syllabus',
-                subject: 'Computer Engineering',
-                semester: 'Semester 4',
-                icon: 'file-text',
-                iconColor: 'text-blue-600',
-                bgColor: 'bg-blue-100',
-                timestamp: '2 hours ago'
-            },
-            {
-                id: 2,
-                title: 'Library Management System',
-                type: 'Microproject',
-                subject: 'Computer Engineering',
-                semester: '',
-                icon: 'lightbulb',
-                iconColor: 'text-green-600',
-                bgColor: 'bg-green-100',
-                timestamp: '1 day ago'
-            },
-            {
-                id: 3,
-                title: 'Programming Fundamentals Assignment',
-                type: 'Assignment',
-                subject: 'Semester 4',
-                semester: '',
-                icon: 'clipboard-check',
-                iconColor: 'text-purple-600',
-                bgColor: 'bg-purple-100',
-                timestamp: '3 days ago'
-            }
-        ],
-        
-        bookmarked: [
-            {
-                id: 1,
-                title: 'Engineering Mathematics Notes',
-                description: 'Important formulas and concepts',
-                icon: 'star',
-                iconColor: 'text-yellow-600',
-                bgColor: 'bg-yellow-100'
-            },
-            {
-                id: 2,
-                title: 'Previous Year Question Papers',
-                description: 'Computer Engineering 2023',
-                icon: 'file-text',
-                iconColor: 'text-red-600',
-                bgColor: 'bg-red-100'
-            }
-        ],
-        
-        downloaded: [
-            {
-                id: 1,
-                title: 'Digital Electronics Syllabus.pdf',
-                description: 'Downloaded 2 days ago • 2.4 MB',
-                icon: 'download',
-                iconColor: 'text-green-600',
-                bgColor: 'bg-green-100'
-            },
-            {
-                id: 2,
-                title: 'Microproject Guidelines.pdf',
-                description: 'Downloaded 1 week ago • 1.8 MB',
-                icon: 'download',
-                iconColor: 'text-blue-600',
-                bgColor: 'bg-blue-100'
-            }
-        ]
-    },
-    
-    progress: {
-        overall: 68,
-        subjects: [
-            { name: 'Data Structures', progress: 85, color: 'green' },
-            { name: 'Digital Electronics', progress: 72, color: 'blue' },
-            { name: 'Mathematics', progress: 58, color: 'yellow' },
-            { name: 'Computer Organization', progress: 63, color: 'purple' }
-        ]
-    },
-    
-    activities: [
-        {
-            id: 1,
-            action: 'Completed',
-            item: 'Programming Assignment #3',
-            icon: 'check',
-            iconColor: 'text-green-600',
-            bgColor: 'bg-green-100',
-            timestamp: '2 hours ago'
-        },
-        {
-            id: 2,
-            action: 'Downloaded',
-            item: 'Digital Electronics Syllabus',
-            icon: 'download',
-            iconColor: 'text-blue-600',
-            bgColor: 'bg-blue-100',
-            timestamp: '1 day ago'
-        },
-        {
-            id: 3,
-            action: 'Bookmarked',
-            item: 'Mathematics Formula Sheet',
-            icon: 'star',
-            iconColor: 'text-yellow-600',
-            bgColor: 'bg-yellow-100',
-            timestamp: '3 days ago'
-        }
-    ],
-    
-    achievements: [
-        {
-            id: 1,
-            title: 'First Semester Complete',
-            description: 'Completed all subjects with 85% average',
-            icon: 'trophy',
-            bgGradient: 'from-yellow-50 to-orange-50',
-            borderColor: 'border-yellow-200',
-            iconBg: 'bg-yellow-500'
-        },
-        {
-            id: 2,
-            title: 'Microproject Master',
-            description: 'Completed 5 microprojects successfully',
-            icon: 'lightbulb',
-            bgGradient: 'from-blue-50 to-purple-50',
-            borderColor: 'border-blue-200',
-            iconBg: 'bg-blue-500'
-        },
-        {
-            id: 3,
-            title: 'Top Contributor',
-            description: 'Helped 20+ students with resources',
-            icon: 'users',
-            bgGradient: 'from-green-50 to-emerald-50',
-            borderColor: 'border-green-200',
-            iconBg: 'bg-green-500'
-        }
-    ],
-    
-    stats: {
-        resourcesAccessed: 47,
-        downloads: 12,
-        bookmarks: 8,
-        achievements: 3
-    },
-    
-    notifications: [
-        {
-            id: 1,
-            title: 'New syllabus update available',
-            description: 'Computer Engineering - Semester 4',
-            type: 'info',
-            borderColor: 'border-blue-500',
-            bgColor: 'bg-blue-50'
-        },
-        {
-            id: 2,
-            title: 'Assignment deadline approaching',
-            description: 'Due in 2 days',
-            type: 'warning',
-            borderColor: 'border-yellow-500',
-            bgColor: 'bg-yellow-50'
-        },
-        {
-            id: 3,
-            title: 'New microproject ideas added',
-            description: 'Check out the latest projects',
-            type: 'success',
-            borderColor: 'border-green-500',
-            bgColor: 'bg-green-50'
-        }
-    ]
-};
+// Profile Management
+class ProfileManager {
+    constructor() {
+        this.isEditing = false;
+        this.originalData = {};
+        this.initializeEventListeners();
+        this.loadTheme();
+    }
 
-// Application State
-let appState = {
-    currentResourceTab: 'recent',
-    darkMode: false,
-    notifications: true
-};
+    initializeEventListeners() {
+        // Edit Profile Button
+        document.getElementById('edit-btn').addEventListener('click', () => {
+            this.startEditing();
+        });
 
-// DOM Elements
-const resourceTabs = document.querySelectorAll('.resource-tab');
-const resourcePanels = document.querySelectorAll('.resource-panel');
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-const notificationsToggle = document.getElementById('notifications-toggle');
+        // Save Button
+        document.getElementById('save-btn').addEventListener('click', () => {
+            this.saveProfile();
+        });
+
+        // Cancel Button
+        document.getElementById('cancel-btn').addEventListener('click', () => {
+            this.cancelEditing();
+        });
+
+        // Theme Toggle
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            this.toggleTheme();
+        });
+
+        // Change Photo Button (placeholder functionality)
+        document.getElementById('change-photo-btn').addEventListener('click', () => {
+            this.changePhoto();
+        });
+    }
+
+    startEditing() {
+        this.isEditing = true;
+        
+        // Store original data
+        this.originalData = {
+            name: document.getElementById('name-display').textContent,
+            email: document.getElementById('email-display').textContent,
+            branch: document.getElementById('branch-display').textContent,
+            semester: document.getElementById('semester-display').textContent,
+            college: document.getElementById('college-display').textContent,
+            bio: document.getElementById('bio-display').textContent
+        };
+
+        // Set input values
+        document.getElementById('name-input').value = this.originalData.name;
+        document.getElementById('email-input').value = this.originalData.email;
+        document.getElementById('branch-input').value = this.originalData.branch;
+        document.getElementById('semester-input').value = this.originalData.semester;
+        document.getElementById('college-input').value = this.originalData.college;
+        document.getElementById('bio-input').value = this.originalData.bio;
+
+        // Toggle visibility
+        this.toggleEditMode(true);
+    }
+
+    saveProfile() {
+        // Get new values
+        const newData = {
+            name: document.getElementById('name-input').value.trim(),
+            email: document.getElementById('email-input').value.trim(),
+            branch: document.getElementById('branch-input').value,
+            semester: document.getElementById('semester-input').value,
+            college: document.getElementById('college-input').value.trim(),
+            bio: document.getElementById('bio-input').value.trim()
+        };
+
+        // Validate required fields
+        if (!newData.name || !newData.email || !newData.college) {
+            alert('Please fill in all required fields (Name, Email, College)');
+            return;
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(newData.email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
+
+        // Update display fields
+        document.getElementById('name-display').textContent = newData.name;
+        document.getElementById('email-display').textContent = newData.email;
+        document.getElementById('branch-display').textContent = newData.branch;
+        document.getElementById('semester-display').textContent = newData.semester;
+        document.getElementById('college-display').textContent = newData.college;
+        document.getElementById('bio-display').textContent = newData.bio;
+
+        // Update welcome name
+        const firstName = newData.name.split(' ')[0];
+        document.getElementById('welcome-name').textContent = firstName;
+
+        // Save to localStorage
+        localStorage.setItem('userProfile', JSON.stringify(newData));
+
+        // Exit edit mode
+        this.isEditing = false;
+        this.toggleEditMode(false);
+
+        // Show success message
+        this.showNotification('Profile updated successfully!', 'success');
+    }
+
+    cancelEditing() {
+        this.isEditing = false;
+        this.toggleEditMode(false);
+    }
+
+    toggleEditMode(editing) {
+        // Toggle button visibility
+        document.getElementById('edit-btn').style.display = editing ? 'none' : 'flex';
+        document.getElementById('save-cancel-btns').style.display = editing ? 'flex' : 'none';
+        document.getElementById('change-photo-btn').style.display = editing ? 'block' : 'none';
+
+        // Toggle field visibility
+        const fields = ['name', 'email', 'branch', 'semester', 'college', 'bio'];
+        fields.forEach(field => {
+            document.getElementById(`${field}-display`).style.display = editing ? 'none' : 'block';
+            document.getElementById(`${field}-input`).style.display = editing ? 'block' : 'none';
+        });
+    }
+
+    changePhoto() {
+        // Placeholder for photo change functionality
+        // In a real application, this would open a file picker
+        alert('Photo change functionality would be implemented here. This would typically open a file picker to select a new profile image.');
+    }
+
+    showNotification(message, type = 'info') {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        
+        // Style the notification
+        Object.assign(notification.style, {
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            padding: '12px 24px',
+            borderRadius: '8px',
+            color: 'white',
+            fontWeight: '500',
+            zIndex: '1000',
+            transform: 'translateX(100%)',
+            transition: 'transform 0.3s ease'
+        });
+
+        // Set background color based on type
+        const colors = {
+            success: '#10b981',
+            error: '#ef4444',
+            info: '#3b82f6'
+        };
+        notification.style.backgroundColor = colors[type] || colors.info;
+
+        // Add to DOM
+        document.body.appendChild(notification);
+
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+
+        // Remove after 3 seconds
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
+
+    // Theme Management
+    loadTheme() {
+        const savedTheme = localStorage.getItem('darkMode');
+        const isDark = savedTheme === 'true';
+        
+        if (isDark) {
+            document.body.classList.add('dark-mode');
+            this.updateThemeToggle(true);
+        }
+    }
+
+    toggleTheme() {
+        const isDark = document.body.classList.contains('dark-mode');
+        
+        if (isDark) {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('darkMode', 'false');
+            this.updateThemeToggle(false);
+        } else {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('darkMode', 'true');
+            this.updateThemeToggle(true);
+        }
+    }
+
+    updateThemeToggle(isDark) {
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+        const title = document.getElementById('theme-title');
+
+        if (isDark) {
+            toggle.classList.add('active');
+            title.textContent = 'Dark Mode';
+            // Moon icon
+            icon.innerHTML = `
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            `;
+        } else {
+            toggle.classList.remove('active');
+            title.textContent = 'Light Mode';
+            // Sun icon
+            icon.innerHTML = `
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            `;
+        }
+    }
+
+    // Load saved profile data
+    loadSavedProfile() {
+        const savedProfile = localStorage.getItem('userProfile');
+        if (savedProfile) {
+            const profileData = JSON.parse(savedProfile);
+            
+            // Update display fields
+            document.getElementById('name-display').textContent = profileData.name;
+            document.getElementById('email-display').textContent = profileData.email;
+            document.getElementById('branch-display').textContent = profileData.branch;
+            document.getElementById('semester-display').textContent = profileData.semester;
+            document.getElementById('college-display').textContent = profileData.college;
+            document.getElementById('bio-display').textContent = profileData.bio;
+
+            // Update welcome name
+            const firstName = profileData.name.split(' ')[0];
+            document.getElementById('welcome-name').textContent = firstName;
+        }
+    }
+}
+
+// Interactive Elements
+class InteractiveElements {
+    constructor() {
+        this.initializeInteractions();
+    }
+
+    initializeInteractions() {
+        // Resource item clicks
+        this.addResourceItemListeners();
+        
+        // Suggestion item clicks
+        this.addSuggestionItemListeners();
+        
+        // Action item clicks
+        this.addActionItemListeners();
+        
+        // Achievement hover effects
+        this.addAchievementHoverEffects();
+    }
+
+    addResourceItemListeners() {
+        const resourceItems = document.querySelectorAll('.resource-item');
+        resourceItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.querySelector('.resource-title').textContent;
+                this.showResourceModal(title);
+            });
+        });
+    }
+
+    addSuggestionItemListeners() {
+        const suggestionItems = document.querySelectorAll('.suggestion-item');
+        suggestionItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.querySelector('.suggestion-title').textContent;
+                this.showSuggestionModal(title);
+            });
+        });
+    }
+
+    addActionItemListeners() {
+        // Notifications button
+        const notificationBtn = document.querySelector('.action-item');
+        if (notificationBtn) {
+            notificationBtn.addEventListener('click', () => {
+                this.showNotificationsModal();
+            });
+        }
+
+        // Account Settings button
+        const settingsBtn = document.querySelectorAll('.action-item')[1];
+        if (settingsBtn) {
+            settingsBtn.addEventListener('click', () => {
+                this.showSettingsModal();
+            });
+        }
+    }
+
+    addAchievementHoverEffects() {
+        const achievementItems = document.querySelectorAll('.achievement-item');
+        achievementItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-2px)';
+                item.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+                item.style.boxShadow = 'none';
+            });
+        });
+    }
+
+    showResourceModal(title) {
+        alert(`Opening resource: ${title}\n\nThis would typically open the resource in a new tab or modal window.`);
+    }
+
+    showSuggestionModal(title) {
+        alert(`Opening suggestion: ${title}\n\nThis would typically navigate to the suggested content.`);
+    }
+
+    showNotificationsModal() {
+        const notifications = [
+            'New assignment posted for Data Structures',
+            'Microproject submission deadline approaching',
+            'New study material available for your branch'
+        ];
+        
+        alert(`Notifications (${notifications.length}):\n\n${notifications.join('\n')}`);
+    }
+
+    showSettingsModal() {
+        alert('Account Settings\n\nThis would typically open a settings page where you can:\n- Change password\n- Update preferences\n- Manage notifications\n- Privacy settings');
+    }
+}
+
+// Progress Animation
+class ProgressAnimator {
+    constructor() {
+        this.animateProgressBar();
+        this.animateCounters();
+    }
+
+    animateProgressBar() {
+        const progressFill = document.querySelector('.progress-fill');
+        if (progressFill) {
+            // Start from 0 and animate to target width
+            const targetWidth = progressFill.style.width;
+            progressFill.style.width = '0%';
+            
+            setTimeout(() => {
+                progressFill.style.width = targetWidth;
+            }, 500);
+        }
+    }
+
+    animateCounters() {
+        // Animate notification badge
+        const badge = document.querySelector('.notification-badge');
+        if (badge) {
+            const targetCount = parseInt(badge.textContent);
+            let currentCount = 0;
+            
+            const interval = setInterval(() => {
+                currentCount++;
+                badge.textContent = currentCount;
+                
+                if (currentCount >= targetCount) {
+                    clearInterval(interval);
+                }
+            }, 200);
+        }
+    }
+}
+
+// Responsive Behavior
+class ResponsiveHandler {
+    constructor() {
+        this.handleResize();
+        window.addEventListener('resize', () => this.handleResize());
+    }
+
+    handleResize() {
+        const isMobile = window.innerWidth < 768;
+        
+        // Adjust grid layout for mobile
+        const gridLayout = document.querySelector('.grid-layout');
+        if (gridLayout) {
+            if (isMobile) {
+                gridLayout.style.gridTemplateColumns = '1fr';
+            } else {
+                gridLayout.style.gridTemplateColumns = '2fr 1fr';
+            }
+        }
+
+        // Adjust card padding for mobile
+        const cards = document.querySelectorAll('.profile-card, .resources-card, .progress-card, .suggestions-card, .actions-card');
+        cards.forEach(card => {
+            if (isMobile) {
+                card.style.padding = '1rem';
+            } else {
+                card.style.padding = '1.5rem';
+            }
+        });
+    }
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const profileManager = new ProfileManager();
+    const interactiveElements = new InteractiveElements();
+    const progressAnimator = new ProgressAnimator();
+    const responsiveHandler = new ResponsiveHandler();
+    
+    // Load saved profile data
+    profileManager.loadSavedProfile();
+    
+    // Add smooth scrolling for any anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Add loading animation
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+    }, 100);
+});
 
 // Utility Functions
-function updateProfileInfo() {
-    const user = profileData.user;
-    
-    document.getElementById('profile-initials').textContent = user.initials;
-    document.getElementById('profile-name').textContent = user.name;
-    document.getElementById('profile-branch').textContent = user.branch;
-    document.getElementById('profile-semester').textContent = user.semester;
-    document.getElementById('profile-college').textContent = user.college;
-    document.getElementById('profile-bio').textContent = user.bio;
-}
-
-function renderResourcePanel(type) {
-    const panel = document.getElementById(`${type}-panel`);
-    const resources = profileData.resources[type];
-    
-    if (!panel || !resources) return;
-    
-    const resourcesHTML = resources.map(resource => {
-        if (type === 'recent') {
-            return `
-                <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
-                    <div class="w-10 h-10 ${resource.bgColor} rounded-lg flex items-center justify-center mr-3">
-                        <i data-lucide="${resource.icon}" class="w-5 h-5 ${resource.iconColor}"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="font-medium text-gray-900">${resource.title}</h4>
-                        <p class="text-sm text-gray-500">${resource.subject}${resource.semester ? ' • ' + resource.semester : ''}</p>
-                    </div>
-                    <span class="text-xs text-gray-400">${resource.timestamp}</span>
-                </div>
-            `;
-        } else if (type === 'bookmarked') {
-            return `
-                <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
-                    <div class="w-10 h-10 ${resource.bgColor} rounded-lg flex items-center justify-center mr-3">
-                        <i data-lucide="${resource.icon}" class="w-5 h-5 ${resource.iconColor}"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="font-medium text-gray-900">${resource.title}</h4>
-                        <p class="text-sm text-gray-500">${resource.description}</p>
-                    </div>
-                    <button class="text-yellow-500 hover:text-yellow-600">
-                        <i data-lucide="bookmark" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            `;
-        } else if (type === 'downloaded') {
-            return `
-                <div class="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
-                    <div class="w-10 h-10 ${resource.bgColor} rounded-lg flex items-center justify-center mr-3">
-                        <i data-lucide="${resource.icon}" class="w-5 h-5 ${resource.iconColor}"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h4 class="font-medium text-gray-900">${resource.title}</h4>
-                        <p class="text-sm text-gray-500">${resource.description}</p>
-                    </div>
-                    <button class="text-blue-600 hover:text-blue-700">
-                        <i data-lucide="external-link" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            `;
-        }
-    }).join('');
-    
-    panel.innerHTML = `<div class="space-y-3">${resourcesHTML}</div>`;
-}
-
-function renderAllResourcePanels() {
-    renderResourcePanel('recent');
-    renderResourcePanel('bookmarked');
-    renderResourcePanel('downloaded');
-}
-
-function switchResourceTab(tabName) {
-    // Update tab states
-    resourceTabs.forEach(tab => {
-        tab.classList.remove('active');
-        if (tab.dataset.tab === tabName) {
-            tab.classList.add('active');
-        }
-    });
-    
-    // Update panel visibility
-    resourcePanels.forEach(panel => {
-        panel.classList.remove('active');
-        if (panel.id === `${tabName}-panel`) {
-            panel.classList.add('active');
-        }
-    });
-    
-    appState.currentResourceTab = tabName;
-}
-
-function renderProgressBars() {
-    const overallProgress = profileData.progress.overall;
-    const overallBar = document.querySelector('.bg-blue-600');
-    if (overallBar) {
-        overallBar.style.width = `${overallProgress}%`;
-    }
-    
-    profileData.progress.subjects.forEach((subject, index) => {
-        const progressBars = document.querySelectorAll('.progress-bar');
-        if (progressBars[index]) {
-            progressBars[index].style.width = `${subject.progress}%`;
-        }
-    });
-}
-
-function renderActivityFeed() {
-    const activities = profileData.activities;
-    const activityContainer = document.querySelector('#recent-activity .space-y-4');
-    
-    if (!activityContainer) return;
-    
-    const activitiesHTML = activities.map(activity => `
-        <div class="flex items-start space-x-3">
-            <div class="w-8 h-8 ${activity.bgColor} rounded-full flex items-center justify-center">
-                <i data-lucide="${activity.icon}" class="w-4 h-4 ${activity.iconColor}"></i>
-            </div>
-            <div class="flex-1">
-                <p class="text-sm text-gray-900">${activity.action} <strong>${activity.item}</strong></p>
-                <p class="text-xs text-gray-500">${activity.timestamp}</p>
-            </div>
-        </div>
-    `).join('');
-    
-    activityContainer.innerHTML = activitiesHTML;
-}
-
-function renderStats() {
-    const stats = profileData.stats;
-    const statElements = document.querySelectorAll('.text-2xl.font-bold');
-    
-    if (statElements.length >= 4) {
-        statElements[0].textContent = stats.resourcesAccessed;
-        statElements[1].textContent = stats.downloads;
-        statElements[2].textContent = stats.bookmarks;
-        statElements[3].textContent = stats.achievements;
-    }
-}
-
-function handleTabClick(event) {
-    const tabName = event.target.dataset.tab;
-    if (tabName) {
-        switchResourceTab(tabName);
-    }
-}
-
-function handleToggleChange(toggleId, settingName) {
-    const toggle = document.getElementById(toggleId);
-    if (toggle) {
-        appState[settingName] = toggle.checked;
+const utils = {
+    // Format date strings
+    formatDate(dateString) {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         
-        // Handle specific toggle actions
-        if (settingName === 'darkMode') {
-            // Implement dark mode toggle logic here
-            console.log('Dark mode:', appState.darkMode ? 'enabled' : 'disabled');
-        } else if (settingName === 'notifications') {
-            console.log('Notifications:', appState.notifications ? 'enabled' : 'disabled');
-        }
-    }
-}
-
-function handleEditProfile() {
-    // Implement edit profile functionality
-    console.log('Edit profile clicked');
-    // This could open a modal or navigate to an edit page
-}
-
-function handleResourceClick(resourceId, type) {
-    // Implement resource click handling
-    console.log(`Resource clicked: ${resourceId} of type ${type}`);
-    // This could open the resource or navigate to its page
-}
-
-function handleBookmarkToggle(resourceId) {
-    // Implement bookmark toggle functionality
-    console.log(`Bookmark toggled for resource: ${resourceId}`);
-    // This would update the bookmark state and re-render
-}
-
-function handleNotificationClick(notificationId) {
-    // Implement notification click handling
-    console.log(`Notification clicked: ${notificationId}`);
-    // This could mark as read or navigate to relevant content
-}
-
-// Event Listeners
-function initializeEventListeners() {
-    // Resource tab switching
-    resourceTabs.forEach(tab => {
-        tab.addEventListener('click', handleTabClick);
-    });
+        if (diffDays === 1) return 'Yesterday';
+        if (diffDays < 7) return `${diffDays} days ago`;
+        if (diffDays < 30) return `${Math.ceil(diffDays / 7)} weeks ago`;
+        return `${Math.ceil(diffDays / 30)} months ago`;
+    },
     
-    // Toggle switches
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('change', () => {
-            handleToggleChange('dark-mode-toggle', 'darkMode');
-        });
-    }
+    // Validate email
+    isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    },
     
-    if (notificationsToggle) {
-        notificationsToggle.addEventListener('change', () => {
-            handleToggleChange('notifications-toggle', 'notifications');
-        });
+    // Generate random avatar
+    generateAvatar(name) {
+        const colors = ['#4f46e5', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+        const color = colors[name.length % colors.length];
+        const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+        
+        return `data:image/svg+xml,${encodeURIComponent(`
+            <svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+                <rect width="150" height="150" fill="${color}"/>
+                <text x="75" y="85" font-family="Arial, sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="white">${initials}</text>
+            </svg>
+        `)}`;
     }
-    
-    // Edit profile button
-    const editProfileBtn = document.querySelector('button:has([data-lucide="edit"])');
-    if (editProfileBtn) {
-        editProfileBtn.addEventListener('click', handleEditProfile);
-    }
-    
-    // Profile picture upload
-    const profilePictureBtn = document.querySelector('button:has([data-lucide="camera"])');
-    if (profilePictureBtn) {
-        profilePictureBtn.addEventListener('click', () => {
-            console.log('Profile picture upload clicked');
-            // Implement file upload functionality
-        });
-    }
-}
-
-// Animation Functions
-function animateProgressBars() {
-    const progressBars = document.querySelectorAll('[style*="width"]');
-    progressBars.forEach((bar, index) => {
-        setTimeout(() => {
-            bar.classList.add('progress-bar');
-        }, index * 100);
-    });
-}
-
-function animateCounters() {
-    const counters = document.querySelectorAll('.text-2xl.font-bold');
-    counters.forEach(counter => {
-        const target = parseInt(counter.textContent);
-        let current = 0;
-        const increment = target / 20;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                counter.textContent = target;
-                clearInterval(timer);
-            } else {
-                counter.textContent = Math.floor(current);
-            }
-        }, 50);
-    });
-}
-
-// Initialization
-function initializeProfile() {
-    updateProfileInfo();
-    renderAllResourcePanels();
-    renderStats();
-    initializeEventListeners();
-    
-    // Initialize Lucide icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-    
-    // Add animations
-    setTimeout(() => {
-        animateProgressBars();
-        animateCounters();
-    }, 500);
-}
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeProfile);
-
-// Export functions for potential external use
-window.profileApp = {
-    switchResourceTab,
-    handleEditProfile,
-    handleResourceClick,
-    handleBookmarkToggle,
-    handleNotificationClick,
-    profileData,
-    appState
 };
