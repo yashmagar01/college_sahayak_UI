@@ -543,12 +543,36 @@ function setupEventListeners() {
 
 function handleShowMaterials() {
     if (selectedBranch && selectedSemester) {
-        const branchName = branches.find(b => b.id === selectedBranch)?.name;
-        const semesterName = semesters.find(s => s.id === selectedSemester)?.name;
+        // Get branch and semester info
+        const branch = branches.find(b => b.id === selectedBranch);
+        const semester = semesters.find(s => s.id === selectedSemester);
         
-        alert(`Showing materials for ${branchName} - ${semesterName}\n\nThis would typically navigate to a materials page or open a modal with the available resources.`);
-        
-        console.log(`Showing materials for ${selectedBranch} - ${selectedSemester}`);
+        if (branch && semester) {
+            // Format the semester ID to match the file name (e.g., '3' -> '3rd')
+            const formatSemesterId = (id) => {
+                const suffixes = ['th', 'st', 'nd', 'rd'];
+                const v = parseInt(id);
+                const suffix = (v > 3 && v < 21) ? 'th' : suffixes[Math.min(v % 10, 3)] || 'th';
+                return id + (v === 1 ? 'st' : v === 2 ? 'nd' : v === 3 ? 'rd' : 'th');
+            };
+            
+            // Use branch ID for the folder name (e.g., 'computer' instead of 'computer-engineering')
+            const branchFolder = branch.id;
+            const semesterFile = formatSemesterId(semester.id);
+            
+            // Create the URL
+            const url = `branches-semesters/${branchFolder}/${semesterFile}.html`;
+            
+            console.log(`Redirecting to: ${url}`);
+            
+            // Redirect to the semester page
+            window.location.href = url;
+        } else {
+            console.error('Branch or semester not found');
+            alert('Error: Could not find the selected branch or semester.');
+        }
+    } else {
+        alert('Please select both branch and semester.');
     }
 }
 
