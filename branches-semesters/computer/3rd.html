@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Engineering - Semester 3 - College Sahayak</title>
+    <meta name="description" content="Complete academic resources for Computer Engineering Semester 3 - Study materials, practicals, assignments, microprojects, video lectures, and help guides. MSBTE curriculum aligned.">
+    <meta name="keywords" content="computer engineering semester 3, MSBTE, polytechnic, diploma, study materials, practicals, assignments, microprojects, video lectures, college resources, Maharashtra">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.344.0/lucide.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i data-lucide="book-open"></i>
+                    </div>
+                    <span class="logo-text">College Sahayak</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#" class="nav-link">
+                        <i data-lucide="home"></i>
+                        Home
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i data-lucide="file-text"></i>
+                        Resources
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i data-lucide="user"></i>
+                        Login/Register
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i data-lucide="info"></i>
+                        About Us
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i data-lucide="user"></i>
+                        Profile
+                    </a>
+                    <button class="btn-feedback">
+                        <i data-lucide="message-circle"></i>
+                        Feedback
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i data-lucide="menu" id="menuIcon"></i>
+                    <i data-lucide="x" id="closeIcon" style="display: none;"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="nav-mobile" id="mobileNav">
+                <a href="#" class="nav-link-mobile">
+                    <i data-lucide="home"></i>
+                    Home
+                </a>
+                <a href="#" class="nav-link-mobile">
+                    <i data-lucide="file-text"></i>
+                    Resources
+                </a>
+                <a href="#" class="nav-link-mobile">
+                    <i data-lucide="user"></i>
+                    Login/Register
+                </a>
+                <a href="#" class="nav-link-mobile">
+                    <i data-lucide="info"></i>
+                    About Us
+                </a>
+                <a href="#" class="nav-link-mobile">
+                    <i data-lucide="user"></i>
+                    Profile
+                </a>
+                <button class="btn-feedback-mobile">
+                    <i data-lucide="message-circle"></i>
+                    Feedback
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Current Location Indicator -->
+        <div class="container">
+            <div class="location-indicator">
+                <div class="location-content">
+                    <span class="location-label">You are viewing:</span>
+                    <span class="location-branch">Computer Engineering</span>
+                    <i data-lucide="chevron-right" class="location-separator"></i>
+                    <span class="location-semester">Semester 3</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Study Materials Section -->
+        <section class="section study-materials">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i data-lucide="book-open" class="section-icon"></i>
+                        <h2>Study Materials</h2>
+                    </div>
+                    <div class="section-controls">
+                        <div class="filter-control">
+                            <i data-lucide="filter" class="filter-icon"></i>
+                            <select id="materialFilter" class="filter-select">
+                                <option value="all">All Subjects</option>
+                                <option value="recent">Recently Updated</option>
+                                <option value="popular">Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subjects-grid" id="subjectsGrid">
+                    <!-- Subject cards will be populated by JavaScript -->
+                </div>
+
+                <!-- Subject Detail View (Hidden by default) -->
+                <div class="subject-detail" id="subjectDetail" style="display: none;">
+                    <div class="detail-header">
+                        <button class="back-btn" id="backBtn">
+                            ← Back to Subjects
+                        </button>
+                        <div class="detail-info">
+                            <h2 id="detailTitle"></h2>
+                            <p id="detailCode"></p>
+                        </div>
+                    </div>
+                    <div class="materials-list">
+                        <div class="materials-header">
+                            <h3>Available Materials</h3>
+                            <button class="important-filter-btn">Show Important Questions Only</button>
+                        </div>
+                        <div class="files-grid" id="filesGrid">
+                            <!-- Files will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advertisement Slot -->
+        <div class="container">
+            <div class="ad-placeholder ad-banner">
+                <div class="ad-content">
+                    <div class="ad-label">Advertisement</div>
+                    <div class="ad-size">728px × 90px</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Practicals Section -->
+        <section class="section practicals">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i data-lucide="settings" class="section-icon practicals-icon"></i>
+                        <h2>Practicals & Assignments</h2>
+                    </div>
+                </div>
+
+                <div class="practicals-layout">
+                    <div class="practicals-grid">
+                        <!-- Practical cards will be populated by JavaScript -->
+                    </div>
+
+                    <div class="practicals-sidebar">
+                        <div class="tips-card">
+                            <div class="tips-header">
+                                <i data-lucide="lightbulb" class="tips-icon"></i>
+                                <h3>Writing Effective Practicals</h3>
+                            </div>
+                            <ul class="tips-list">
+                                <li>Always include proper comments in your code</li>
+                                <li>Follow consistent naming conventions</li>
+                                <li>Test your programs with multiple inputs</li>
+                                <li>Document your approach and logic</li>
+                            </ul>
+                        </div>
+
+                        <div class="tips-card">
+                            <div class="tips-header">
+                                <i data-lucide="lightbulb" class="tips-icon"></i>
+                                <h3>Viva Voce Preparation</h3>
+                            </div>
+                            <ul class="tips-list">
+                                <li>Understand the theory behind each practical</li>
+                                <li>Be ready to explain your code line by line</li>
+                                <li>Practice common debugging scenarios</li>
+                                <li>Review related theoretical concepts</li>
+                            </ul>
+                        </div>
+
+                        <div class="help-card">
+                            <div class="help-header">
+                                <i data-lucide="help-circle" class="help-icon"></i>
+                                <h3>Need Help?</h3>
+                            </div>
+                            <p>Having trouble with your practicals? Get instant help from our community.</p>
+                            <button class="help-btn">Ask Question</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advertisement Slot -->
+        <div class="container">
+            <div class="ad-placeholder ad-square">
+                <div class="ad-content">
+                    <div class="ad-label">Advertisement</div>
+                    <div class="ad-size">300px × 250px</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Microprojects Section -->
+        <section class="section microprojects">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i data-lucide="lightbulb" class="section-icon microprojects-icon"></i>
+                        <h2>Microprojects & Project Ideas</h2>
+                    </div>
+                </div>
+
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Project cards will be populated by JavaScript -->
+                </div>
+
+                <!-- Viva Q&A Section -->
+                <div class="viva-section">
+                    <div class="viva-header">
+                        <i data-lucide="help-circle" class="viva-icon"></i>
+                        <h3>Viva Q&A for Microprojects</h3>
+                    </div>
+                    <div class="viva-questions" id="vivaQuestions">
+                        <!-- Viva questions will be populated by JavaScript -->
+                    </div>
+                    <div class="viva-footer">
+                        <button class="btn-primary">View More Viva Questions</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Lectures Section -->
+        <section class="section video-lectures">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i data-lucide="play" class="section-icon video-icon"></i>
+                        <h2>Curated Video Lectures</h2>
+                    </div>
+                </div>
+                
+                <p class="section-description">
+                    High-quality video tutorials by top educators, carefully selected for Computer Engineering Semester 3
+                </p>
+
+                <div class="videos-grid" id="videosGrid">
+                    <!-- Video cards will be populated by JavaScript -->
+                </div>
+
+                <!-- Quality Assurance Note -->
+                <div class="quality-note">
+                    <div class="quality-header">
+                        <i data-lucide="star" class="quality-icon"></i>
+                        <h3>Quality Assured Content</h3>
+                    </div>
+                    <p>
+                        All video lectures are carefully reviewed and selected by our academic team to ensure they align with your semester curriculum and provide the best learning experience.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advertisement Slot -->
+        <div class="container">
+            <div class="ad-placeholder ad-square">
+                <div class="ad-content">
+                    <div class="ad-label">Advertisement</div>
+                    <div class="ad-size">300px × 250px</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Guides Section -->
+        <section class="section help-guides">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-title">
+                        <i data-lucide="book-open" class="section-icon help-icon"></i>
+                        <h2>Help Guides & Insights</h2>
+                    </div>
+                </div>
+
+                <!-- Student Handbook -->
+                <div class="handbook-card">
+                    <div class="handbook-content">
+                        <div class="handbook-badge">
+                            <i data-lucide="star" class="badge-icon"></i>
+                            <span>ESSENTIAL READING</span>
+                        </div>
+                        <h3>Computer Engineering Student Handbook 2025</h3>
+                        <p>Complete guide for new students covering everything from course structure to campus resources</p>
+                        <div class="handbook-meta">
+                            <span>45 pages</span>
+                            <span>•</span>
+                            <span>Updated 2 weeks ago</span>
+                        </div>
+                        <button class="handbook-btn">Download Handbook</button>
+                    </div>
+                    <div class="handbook-icon">
+                        <i data-lucide="book-open"></i>
+                    </div>
+                </div>
+
+                <!-- Featured Articles -->
+                <div class="guides-section">
+                    <h3>Featured Articles</h3>
+                    <div class="featured-guides" id="featuredGuides">
+                        <!-- Featured guides will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Regular Articles -->
+                <div class="guides-section">
+                    <h3>More Helpful Guides</h3>
+                    <div class="regular-guides" id="regularGuides">
+                        <!-- Regular guides will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="help-cta">
+                    <h3>Need Specific Help?</h3>
+                    <p>Can't find what you're looking for? Our team is here to help with personalized guidance.</p>
+                    <button class="btn-primary">Contact Support</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        <span class="footer-logo-text">College Sahayak</span>
+                    </div>
+                    <p class="footer-description">
+                        Empowering polytechnic diploma students across Maharashtra with comprehensive study materials, practicals, and resources for academic excellence.
+                    </p>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>Maharashtra, India</span>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="mail"></i>
+                            <span>support@collegesahayak.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Essential Links -->
+                <div class="footer-section">
+                    <h3>Essential Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">All Resources</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect With Us -->
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <p class="social-description">
+                        Follow us for updates, study tips, and educational content.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link facebook">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                        <a href="#" class="social-link twitter">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                        <a href="#" class="social-link instagram">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">© 2025 College Sahayak. All Rights Reserved.</p>
+                    <p class="made-with-love">
+                        Made by students, for students, with
+                        <i data-lucide="heart" class="heart-icon"></i>
+                        from College Sahayak
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
