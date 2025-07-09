@@ -336,9 +336,19 @@ function renderTrendingMaterials() {
                 </div>
             </div>
             <div class="flex items-center justify-between">
-                <button class="text-orange-600 hover:text-orange-700 text-sm font-medium">
-                    Download Now
-                </button>
+                <div class="download-btn-container">
+                    <label class="download-btn-label" onclick="handleDownload(this, '${item.id}')">
+                        <input type="checkbox" class="download-btn-input" />
+                        <span class="download-btn-circle">
+                            <svg class="download-btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19V5m0 14-4-4m4 4 4-4"></path>
+                            </svg>
+                            <div class="download-btn-square"></div>
+                        </span>
+                        <p class="download-btn-title">Download</p>
+                        <p class="download-btn-title">Open</p>
+                    </label>
+                </div>
                 <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:text-orange-600 group-hover:translate-x-1 transition-all duration-200"></i>
             </div>
         </div>
@@ -539,6 +549,36 @@ function handleShowMaterials() {
         alert(`Showing materials for ${branchName} - ${semesterName}\n\nThis would typically navigate to a materials page or open a modal with the available resources.`);
         
         console.log(`Showing materials for ${selectedBranch} - ${selectedSemester}`);
+    }
+}
+
+// Handle download button click
+function handleDownload(button, itemId) {
+    // Prevent multiple clicks while animation is running
+    if (button.classList.contains('downloading')) return;
+    
+    // Add downloading class to trigger animation
+    button.classList.add('downloading');
+    
+    // Find the item in the trendingMaterials array
+    const item = trendingMaterials.find(item => item.id.toString() === itemId);
+    if (item) {
+        // Increment download count
+        item.downloads++;
+        
+        // Update the download count in the UI
+        const downloadCountElement = button.closest('.bg-gradient-to-br').querySelector('i[data-lucide="download"]').nextElementSibling;
+        if (downloadCountElement) {
+            downloadCountElement.textContent = item.downloads;
+        }
+        
+        // Simulate file download (in a real app, this would trigger an actual file download)
+        console.log(`Downloading item ${itemId}: ${item.title}`);
+        
+        // After animation completes, remove the downloading class
+        setTimeout(() => {
+            button.classList.remove('downloading');
+        }, 4000); // Match this with the animation duration in CSS
     }
 }
 
